@@ -1,6 +1,6 @@
 # Redshift
 
-### CSV to AWS S3 and then to Redshift
+## CSV to AWS S3 and then to Redshift
 
 The python script is given in this repository:
 - Takes a CSV data file from redshift.data.
@@ -9,14 +9,14 @@ The python script is given in this repository:
 - The list is saved as a bytes I/O to S3.
 - From S3 the data is copied to Redshift.
 
-### Challenges
+## Challenges
 
 - [Five Queries](#Five-Queries)
 - [Write Python Scripts](#Write-Redshift-Python-Script)
 
-# Five Queries
+## Five Queries
 
-## The Queries
+### The Queries
 
 The model is given below the five following queries that are built using MySQL instead of SQL.
 
@@ -75,7 +75,7 @@ GROUP BY Customer.CUST_NAME
 ORDER BY total_sales DESC LIMIT 10) AS t1;
 ```
 
-## The MySQL Query Model
+### The MySQL Query Model
 
 Here is the model for the queries given above.
 
@@ -114,7 +114,7 @@ CREATE TABLE `Orders` (
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
-# Write Redshift Python Script
+## Write Redshift Python Script
 
 The python script is given in this repository:
 - Takes a CSV data file from redshift.data.
@@ -123,7 +123,7 @@ The python script is given in this repository:
 - The list is saved as a bytes I/O to S3.
 - From S3 the data is copied to Redshift.
 
-## Tasks
+### Tasks
 
 (6) Import .csv file into TEST_MSR_SOURCE using Python Script
 (7) Write a Python script that takes all data from TEST_MSR_SOURCE and inserts the data into TEST_MSR_TARGET
@@ -135,9 +135,9 @@ The python script is given in this repository:
 
 (8) Would your script change if the number of rows = 1,000,000? Why or why not?
 
-## The Redshift Python Script Models
+### The Redshift Python Script Models
 
-### Local Database
+#### Local Database
 ```
 CREATE TABLE TEST_MSR_SOURCE (
   rpt_grp_cd varchar(60) ,
@@ -153,7 +153,7 @@ CREATE TABLE TEST_MSR_SOURCE (
   submsn_cmplt_cd varchar(1))
 ```
 
-### Redshift Database
+#### Redshift Database
 ```
 CREATE TABLE TEST_MSR_TARGET (
   TEST_MSR_TARGET_ID int4 NOT NULL
