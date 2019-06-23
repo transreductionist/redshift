@@ -1,0 +1,11 @@
+rpt_grp_cd,msr_cd,lctn_typ_cd,clctn_prd_txt,creat_user_id,submsn_cmplt_cd,grp_rate_dnmntr,grp_rate_nmrtr,clcltn_date,file_name,creat_ts
+11111,MSR1,ALL,2012M11,LTCH_APP,Y,203,1,12/15/2018,test_file.csv,7/18/2013 0:00
+22222,MSR2,ALL,2014M6,LTCH_APP,Y,20,10,12/1/2018,test_file.csv,11/20/2014 0:00
+33333,MSR3,STATE,2013M7,LTCH_APP,Y,50,11,12/15/2018,test_file.csv,11/22/2013 0:00
+44444,MSR4,STATE,2013M12,,Y,40,12,12/15/2018,test_file.csv,
+55555,MSR5,ALL,2014M8,,N,10,8,12/15/2018,test_file.csv,
+66666,MSR6,MEDIC,2013M2,LTCH_APP,Y,2,1,10/10/2018,test_file.csv,4/30/2013 0:00
+77777,MSR7,MEDIC,2013M5,LTCH_APP,N,4,2,12/15/2018,test_file.csv,9/4/2013 0:00
+88888,MSR8,STATE,2012M12,LTCH_APP,Y,6,3,3/7/2017,test_file.csv,4/30/2013 0:00
+99999,MSR9,MEDIC,2014M4,LTCH_APP,N,8,4,12/15/2018,test_file.csv,11/20/2014 0:00
+12345,MSR10,ALL,2013M11,LTCH_APP,Y,507,2,12/15/2018,test_file.csv,2/27/2014 0:00
