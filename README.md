@@ -12,7 +12,7 @@ The python script is given in this repository:
 ## Challenges
 
 - [Five Queries](#Five-Queries)
-- [Write Python Scripts](#Write Redshift Python Script)
+- [Write Python Scripts](#Write-Redshift-Python-Script)
 
 ## Five Queries
 
