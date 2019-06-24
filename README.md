@@ -1,13 +1,4 @@
-# Redshift
-
-## CSV to AWS S3 and then to Redshift
-
-The python script is given in this repository:
-- Takes a CSV data file from redshift.data.
-- Loads this into a MySQL database.
-- Marshmallow (serializer/deserializer) is used to get the model data as list.
-- The list is saved as a bytes I/O to S3.
-- From S3 the data is copied to Redshift.
+# Amazon Web Services: CSV to S3 to Redshift
 
 ## Challenges
 
@@ -18,7 +9,7 @@ The python script is given in this repository:
 
 ### The Queries
 
-The model is given below the five following queries that are built using MySQL instead of SQL.
+The model is given below the five following queries, which are built using MySQL instead of SQL.
 
 (1) Write MySQL Query to list all the Sales for the state of California in the year 2018. List all the sales, meaning the complete row from sales.
 ```
@@ -116,24 +107,40 @@ CREATE TABLE `Orders` (
 
 ## Write Redshift Python Script
 
-The python script is given in this repository:
-- Takes a CSV data file from redshift.data.
-- Loads this into a MySQL database.
-- Marshmallow (serializer/deserializer) is used to get the model data as list.
-- The list is saved as a bytes I/O to S3.
-- From S3 the data is copied to Redshift.
-
 ### Tasks
 
 (6) Import .csv file into TEST_MSR_SOURCE using Python Script
+
 (7) Write a Python script that takes all data from TEST_MSR_SOURCE and inserts the data into TEST_MSR_TARGET
 
 - Database type = Redshift
 - Number of rows = 10
 - Sequential key used for TEST_MSR_TARGET_ID
 - Data transformations from varchar to (date, int, numeric, timestamp)
+- The python script is given in this repository:
+    - Takes a CSV data file from redshift.data.
+    - Loads this into a MySQL database.
+    - Marshmallow (serializer/deserializer) is used:
+         - On post dump of the data it is conditioned.Types and conversions to strings are made.
+    - The list is saved as a bytes I/O to S3.
+    - From S3 the data is copied to Redshift.
 
 (8) Would your script change if the number of rows = 1,000,000? Why or why not?
+
+The script already uses an uplaod to S3 and a COPY to Redshift. Loading to S3 is the suggested way to get data into
+Redshift because it will do the transfer in parallel from Amazon S3. The INSERT statement is inefficient,
+loading row-by-row. If COPY cannot be used then there are ways to improve INSERT performance. Those will not
+be mentioned here.
+
+One improvement that would be made is to use multiple files. The data files should be about equal size and their number
+should be a multiple of the number of slices in your cluster. The ideal file size after compression is between 1 MB
+and 125 MB after compression. COPY automatically will determine the best compression. Compression can be
+specified as well, e.g. GZIP, and other compression methods that are available as well.
+
+Getting a large data set to S3 can take advantage of python multiprocessing.
+
+Using Redshift best practices tune the table to design for optimum performance. Large data sets should be loaded in
+sort key order to avoid needing to reorder.
 
 ### The Redshift Python Script Models
 

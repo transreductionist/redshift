@@ -12,8 +12,8 @@ from helpers.save_s3_file import save_bytesio_to_s3
 def save_csv_to_s3(app):
     reset_database()
     data_path = app.config['REDSHIFT_DATA_PATH']
-    data, header_mapper = load_mysql(data_path, 'python_test.csv')
-    save_bytesio_to_s3(data, header_mapper, 's3.csv')
+    data, redshift_header = load_mysql(data_path, 'python_test.csv')
+    save_bytesio_to_s3(data, redshift_header, 's3.csv')
 
 def copy_s3_to_redshift(app):
     connection_string = get_redshift_connection_string(app)

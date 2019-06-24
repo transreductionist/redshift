@@ -9,10 +9,10 @@ def save_bytesio_to_s3(file_data, field_names, file_name):
         output.write('\n'.encode())
 
     for row in file_data:
-        output.write(','.join(map(str, row)).encode())
+        output.write(','.join(row).encode())
         output.write('\n'.encode())
 
-    metadata = ('Ventara Redshift', file_name)
+    metadata = ('Redshift', file_name)
     WebStorage.save(file_name, output.getvalue(), metadata)
 
     output.close()

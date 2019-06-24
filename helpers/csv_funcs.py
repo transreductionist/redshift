@@ -2,11 +2,11 @@ import csv
 from helpers.models import RedshiftModel
 
 def get_header(csv_reader):
-    headers = next(csv_reader, None)
+    header = next(csv_reader, None)
     model_mapper = {}
-    for idx, field in enumerate(headers):
+    for idx, field in enumerate(header):
         model_mapper[field] = idx
-    return model_mapper
+    return header, model_mapper
 
 def get_file_path(path, name):
     return '{}{}'.format(path, name)
